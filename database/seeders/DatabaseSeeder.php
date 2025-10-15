@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Chirp;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $users = User::factory(5)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        foreach ($users as $user) {
+            Chirp::factory(10)->create([
+                'user_id' => $user->id,
+                'created_at' => now()->subMinutes(rand(1, 1440))
+            ]);
+        }
     }
 }
