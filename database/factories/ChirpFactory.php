@@ -17,7 +17,7 @@ class ChirpFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'message' => fake()->sentence(),
         ];
     }
 }

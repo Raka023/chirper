@@ -16,16 +16,21 @@
         </div>
 
         <div class="flex flex-col items-center w-full gap-4">
-            @foreach ($chirps as $chirp)
+            @forelse ($chirps as $chirp)
                 <div
                     class="w-full p-6 transition-all bg-white border rounded-lg shadow border-zinc-200 lg:w-1/2 hover:shadow-md">
                     <div class="flex flex-col gap-2">
-                        <p class="font-semibold">{{ $chirp['author'] }}</p>
-                        <p class="leading-7">{{ $chirp['message'] }}</p>
-                        <p class="text-sm leading-7 text-gray-400">{{ $chirp['time'] }}</p>
+                        <p class="font-semibold">{{ $chirp->user->name ?? 'Anonymous' }}</p>
+                        <p class="leading-7">{{ $chirp->message }}</p>
+                        <p class="text-sm leading-7 text-gray-400">{{ $chirp->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div
+                    class="w-full p-6 transition-all bg-white border rounded-lg shadow border-zinc-200 lg:w-1/2 hover:shadow-md">
+                    <p class="font-medium text-center">No chirps yet, be the first to chirp!</p>
+                </div>
+            @endforelse
         </div>
     </div>
 
