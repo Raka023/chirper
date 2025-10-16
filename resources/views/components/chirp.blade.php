@@ -13,6 +13,6 @@
             <p class="font-semibold text-md">{{ $chirp->user->name ?? 'Anonymous' }}</p>
         </div>
         <p class="leading-7">{{ $chirp->message }}</p>
-        <p class="text-sm leading-7 text-gray-400">{{ $chirp->created_at->diffForHumans() }}</p>
+        <p class="text-sm leading-7 text-gray-400">{{ $chirp->created_at->diffForHumans() == '0 seconds ago' ? 'Just now' : $chirp->created_at->diffForHumans() }}</p>
     </div>
 </div>

@@ -1,5 +1,6 @@
 @props([
     'variant' => 'primary',
+    'type' => 'button',
 ])
 
 @php
@@ -10,14 +11,13 @@
 
 @if ($attributes->has('href'))
     <a {{ $attributes->merge([
-        'type' => 'button',
         'class' => $class,
     ]) }}>
         {{ $slot }}
     </a>
 @else
     <button {{ $attributes->merge([
-        'type' => 'button',
+        'type' => $type,
         'class' => $class,
     ]) }}>
         {{ $slot }}
