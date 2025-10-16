@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class ChirpController extends Controller
 {
+    private string $messageRequired = 'Write something to chirp';
+    private string $messageMax = 'Chrip cannot be more than 255 characters';
+
     /**
      * Display a listing of the resource.
      */
@@ -27,8 +30,8 @@ class ChirpController extends Controller
         $validated = $request->validate([
             'message' => 'required|string|max:255',
         ], [
-            'message.required' => 'Please write something to chirp',
-            'message.max' => 'Chrip cannot be more than 255 characters',
+            'message.required' => $this->messageRequired,
+            'message.max' => $this->messageMax,
         ]);
 
         Chirp::create($validated);
@@ -39,7 +42,7 @@ class ChirpController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Chirp $chirp)
     {
         //
     }
@@ -47,24 +50,37 @@ class ChirpController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Chirp $chirp)
     {
-        //
+        return view('chirps.edit', [
+            'chirp' => $chirp,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Chirp $chirp)
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ], [
+            'message.required' => $this->messageRequired,
+            'message.max' => $this->messageMax,
+        ]);
+
+        $chirp->update($validated);
+
+        return redirect('/')->with('success', 'Your chirp has been updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Chirp $chirp)
     {
-        //
+        $chirp->delete();
+
+        return redirect('/')->with('success', 'Your chirp has been deleted!');
     }
 }

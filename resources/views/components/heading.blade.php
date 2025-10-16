@@ -1,0 +1,1 @@
+<h2 class="w-full pb-2 text-3xl font-bold tracking-tight scroll-m-20 first:mt-0 xl:w-1/2">{{ $slot }}</h2>

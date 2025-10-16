@@ -1,11 +1,11 @@
 <x-partials.app title="Home">
 
     <div class="flex flex-col items-center justify-center w-full gap-6">
-        <h2 class="w-full pb-2 text-3xl font-bold tracking-tight scroll-m-20 first:mt-0 lg:w-1/2">Latest Chirp</h2>
+        <x-heading>Home</x-heading>
 
         <div
-            class="w-full p-6 space-y-4 transition-all bg-white border rounded-lg shadow border-zinc-200 lg:w-1/2 hover:shadow-md">
-            <form action="/chirps" method="POST" novalidate>
+            class="w-full p-6 space-y-4 transition-all bg-white border rounded-lg shadow border-zinc-200 xl:w-1/2 hover:shadow-md">
+            <form action="{{ route('chirps.store') }}" method="POST">
                 @csrf
                 <textarea
                     class="w-full p-4 transition rounded-md bg-zinc-50 outline outline-zinc-200 hover:outline-zinc-400 focus:outline-zinc-600"

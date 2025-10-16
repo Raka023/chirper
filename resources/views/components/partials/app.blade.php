@@ -22,11 +22,11 @@
     @endif
 </head>
 
-<body class="min-h-screen p-6 antialiased lg:p-8 bg-zinc-50">
+<body class="flex flex-col min-h-screen antialiased p-6 xl:p-8 bg-zinc-50">
 
     <x-navbar />
 
-    <main class="flex flex-col items-center lg:justify-center">
+    <main class="flex-1 flex flex-col items-center xl:justify-center">
         {{ $slot }}
     </main>
 
