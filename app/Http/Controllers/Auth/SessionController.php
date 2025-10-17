@@ -35,7 +35,7 @@ class SessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect()->intended();
     }
 
     /**
@@ -45,6 +45,9 @@ class SessionController extends Controller
     {
         Auth::logout();
 
-        return redirect('/');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->intended();
     }
 }

@@ -13,11 +13,11 @@
         <div class="flex items-center justify-between">
             <div class="space-x-2">
                 <p class="text-sm leading-7 text-gray-400">
-                    <span>{{ $chirp->created_at->diffForHumans() == '0 seconds ago' ? 'Just now' : $chirp->created_at->diffForHumans() }}</span>
+                    <span>{{ $chirp->created_at->diffForHumans() === '0 seconds ago' ? 'Just now' : $chirp->created_at->diffForHumans() }}</span>
                     @if ($chirp->updated_at->gt($chirp->created_at->addSeconds(5)))
                         <span> - </span>
                         <span class="italic">Updated
-                            {{ $chirp->updated_at->diffForHumans() == '0 seconds ago' ? 'Just now' : $chirp->updated_at->diffForHumans() }}</span>
+                            {{ $chirp->updated_at->diffForHumans() === '0 seconds ago' ? 'Just now' : $chirp->updated_at->diffForHumans() }}</span>
                     @endif
                 </p>
             </div>

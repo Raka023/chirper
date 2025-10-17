@@ -5,7 +5,7 @@
 
         <div
             class="w-full p-6 space-y-4 transition-all bg-white border rounded-lg shadow border-zinc-200 lg:w-1/2 hover:shadow-md">
-            <form class="space-y-6" action="{{ route('register.store') }}" method="POST" novalidate>
+            <form class="space-y-6" action="{{ route('register.store') }}" method="POST">
                 @csrf
 
                 <div>
@@ -47,7 +47,7 @@
                         class="w-full p-3 rounded-md border border-zinc-200 bg-zinc-50 outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-200 transition"
                         id="password-confirmation" name="password_confirmation" type="password"
                         placeholder="Confirm Password" required>
-                    @error('password')
+                    @error('password_confirmation')
                         <p class="text-sm text-rose-500 mt-1">{{ $message }}</p>
                     @enderror
                 </div>
