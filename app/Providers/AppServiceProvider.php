@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Chirp;
+use App\Policies\ChirpPolicy;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
